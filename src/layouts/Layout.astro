@@ -52,8 +52,12 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body class="spidey-grid text-white min-h-screen flex flex-col selection:bg-spidey-red selection:text-white">
-    <!-- Overlay for glow effect -->
-    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,102,255,0.25)_0%,rgba(3,3,3,1)_75%)] -z-20 pointer-events-none"></div>
+    <!-- Main top blue glow overlay (strengthened) -->
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,102,255,0.45)_0%,rgba(3,3,3,1)_80%)] -z-20 pointer-events-none"></div>
+    
+    <!-- Ambient blue glows at the sides/edges (alrededores) -->
+    <div class="fixed top-1/4 -left-32 w-96 h-96 rounded-full bg-[rgba(0,102,255,0.15)] blur-[120px] pointer-events-none -z-20"></div>
+    <div class="fixed bottom-1/4 -right-32 w-96 h-96 rounded-full bg-[rgba(0,102,255,0.15)] blur-[120px] pointer-events-none -z-20"></div>
     
     <slot />
   </body>
