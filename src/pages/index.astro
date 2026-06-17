@@ -11,34 +11,17 @@ import ReminderShare from '../components/ReminderShare.astro';
   <!-- Interactive Canvas Web Background -->
   <SpiderBackground />
 
-  <!-- Cinematic Full-Screen Background Slideshow (Double-layer to prevent cropping) -->
+  <!-- Cinematic Full-Screen Background (Double-layer to prevent cropping, brightened/aclarado) -->
   <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
-    <!-- Vignette / Fading Gradients to maximize text readability -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(3,3,3,0.15)_0%,rgba(3,3,3,0.85)_80%)] z-10"></div>
+    <!-- Lightened Vignette / Fading Gradients to maximize visibility of background and readability of text -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(3,3,3,0.1)_0%,rgba(3,3,3,0.75)_80%)] z-10"></div>
     <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-bg to-transparent z-10"></div>
     <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-bg to-transparent z-10"></div>
 
-    <!-- Slides Wrapper -->
-    <div class="relative w-full h-full opacity-20 md:opacity-30 transition-opacity duration-1000">
-      
-      <!-- Slide 1 (Official Marvel Banner - contain to prevent Spidey's body from being cropped) -->
-      <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-100">
-        <img src="https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_dsk_02.webp" class="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-50" alt="Blur Background" />
-        <img src="https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_dsk_02.webp" class="absolute inset-0 w-full h-full object-contain" alt="Official Banner Art" />
-      </div>
-
-      <!-- Slide 2 (Spider-Man Close-up) -->
-      <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
-        <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-50" alt="Blur Background" />
-        <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-contain" alt="Spider-Man Close-up Art" />
-      </div>
-
-      <!-- Slide 3 (Hulk Close-up) -->
-      <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
-        <img src="https://images.unsplash.com/photo-1608889174649-74d3209867c4?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-50" alt="Blur Background" />
-        <img src="https://images.unsplash.com/photo-1608889174649-74d3209867c4?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-contain" alt="Hulk/Bruce Banner Thematic Art" />
-      </div>
-
+    <!-- Background Image Wrapper (Opacity increased to 35% on mobile and 50% on desktop to brighten the image) -->
+    <div class="relative w-full h-full opacity-35 md:opacity-50">
+      <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-40" alt="Blur Background" />
+      <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-contain" alt="Spider-Man Background Art" />
     </div>
   </div>
 
@@ -141,24 +124,4 @@ import ReminderShare from '../components/ReminderShare.astro';
 
 </Layout>
 
-<script>
 
-  // Cinematic Background Slideshow Logic
-  const slides = document.querySelectorAll('.bg-slide');
-  let currentSlide = 0;
-
-  if (slides.length > 0) {
-    setInterval(() => {
-      // Fade out current slide
-      slides[currentSlide].classList.remove('opacity-100');
-      slides[currentSlide].classList.add('opacity-0');
-      
-      // Calculate next slide index
-      currentSlide = (currentSlide + 1) % slides.length;
-      
-      // Fade in next slide
-      slides[currentSlide].classList.remove('opacity-0');
-      slides[currentSlide].classList.add('opacity-100');
-    }, 6000); // Transitions every 6 seconds
-  }
-</script>
