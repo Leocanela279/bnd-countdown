@@ -118,3 +118,9 @@
 .animate-spidey-pulse {
   animation: spidey-pulse 5s ease-in-out infinite;
 }
+
+/* Fade edges of background image to integrate with dark background */
+.spidey-mask-fade {
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 90%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 90%);
+}
