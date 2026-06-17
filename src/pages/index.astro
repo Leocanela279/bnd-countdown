@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SpiderBackground from '../components/SpiderBackground.astro';
+import Countdown from '../components/Countdown.astro';
+import TrailerModal from '../components/TrailerModal.astro';
+import ReminderShare from '../components/ReminderShare.astro';
+---
+
+<Layout title="Spider-Man: Brand New Day | Cuenta Regresiva Oficial">
+  
+  <!-- Interactive Canvas Web Background -->
+  <SpiderBackground />
+
+  <!-- Cinematic Full-Screen Background Slideshow (Double-layer to prevent cropping) -->
+  <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
+    <!-- Vignette / Fading Gradients to maximize text readability -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(3,3,3,0.15)_0%,rgba(3,3,3,0.85)_80%)] z-10"></div>
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-bg to-transparent z-10"></div>
+    <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-bg to-transparent z-10"></div>
+
+    <!-- Slides Wrapper -->
+    <div class="relative w-full h-full opacity-20 md:opacity-30 transition-opacity duration-1000">
+      
+      <!-- Slide 1 (Official Marvel Banner - contain to prevent Spidey's body from being cropped) -->
+      <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-100">
+        <img src="https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_dsk_02.webp" class="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-50" alt="Blur Background" />
+        <img src="https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_dsk_02.webp" class="absolute inset-0 w-full h-full object-contain" alt="Official Banner Art" />
+      </div>
+
+      <!-- Slide 2 (Spider-Man Close-up) -->
+      <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
+        <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-50" alt="Blur Background" />
+        <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-contain" alt="Spider-Man Close-up Art" />
+      </div>
+
+      <!-- Slide 3 (Hulk Close-up) -->
+      <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
+        <img src="https://images.unsplash.com/photo-1608889174649-74d3209867c4?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-50" alt="Blur Background" />
+        <img src="https://images.unsplash.com/photo-1608889174649-74d3209867c4?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-contain" alt="Hulk/Bruce Banner Thematic Art" />
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Content Wrapper (Centered on the entire screen overlay) -->
+  <div class="w-full max-w-6xl mx-auto min-h-screen flex flex-col justify-between relative z-10">
+    
+    <!-- Fixed Background Spider Logo Watermark (Tom Holland Stark Suit Style) -->
+    <div class="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none select-none text-spidey-blue-light/70 animate-spidey-pulse">
+      <svg class="w-[75vw] h-[75vw] max-w-[480px] max-h-[480px] fill-none stroke-current" viewBox="0 0 100 100" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 50 40 L 56 49 L 50 58 L 44 49 Z" fill="currentColor" stroke="none" />
+        <path d="M 50 28 L 53.5 33 L 50 38 L 46.5 33 Z" fill="currentColor" stroke="none" />
+        <path d="M 48 42 L 35 22 L 20 25" />
+        <path d="M 52 42 L 65 22 L 80 25" />
+        <path d="M 46 47 L 30 38 L 14 43" />
+        <path d="M 54 47 L 70 38 L 86 43" />
+        <path d="M 46 53 L 30 60 L 22 76" />
+        <path d="M 54 53 L 70 60 L 78 76" />
+        <path d="M 48 57 L 42 76 L 40 92" />
+        <path d="M 52 57 L 58 76 L 60 92" />
+      </svg>
+    </div>
+
+    <!-- Swinging Spider Decoration -->
+    <div class="fixed top-0 left-4 md:left-12 w-12 h-48 z-20 pointer-events-none origin-top animate-swing select-none opacity-85">
+      <div class="w-px h-28 bg-white/25 mx-auto"></div>
+      <svg class="w-8 h-8 text-spidey-red fill-current mx-auto -mt-1.5 glow-spidey" viewBox="0 0 24 24">
+        <path d="M12,2a2.5,2.5,0,0,0-2.5,2.5c0,.82.4,1.55,1,2v2a5,5,0,0,0-4.5,5l-1.5-1.5a1,1,0,0,0-1.41,1.41l2.35,2.35a5.57,5.57,0,0,0,.15,1.25l-2.5.62a1,1,0,0,0,.48,1.94l2.76-.69a4.87,4.87,0,0,0,1.42,2.2l-1.85,1.85a1,1,0,0,0,1.41,1.41l2.12-2.12a4.91,4.91,0,0,0,4.14,1.43v2.74a1,1,0,0,0,2,0V22.25a4.91,4.91,0,0,0,4.14-1.43l2.12,2.12a1,1,0,0,0,1.41-1.41l-1.85-1.85a4.87,4.87,0,0,0,1.42-2.2l2.76.69a1,1,0,0,0,.48-1.94l-2.5-.62a5.57,5.57,0,0,0,.15-1.25l2.35-2.35a1,1,0,0,0-1.41-1.41L18.5,13.5a5,5,0,0,0-4.5-5v-2c.6-.45,1-1.18,1-2A2.5,2.5,0,0,0,12,2ZM12,8a3,3,0,1,1-3,3A3,3,0,0,1,12,8Z"/>
+      </svg>
+    </div>
+
+    <!-- Premium Header -->
+    <header class="w-full px-6 py-6 flex justify-between items-center z-10">
+      <div class="flex items-center gap-3">
+        <!-- Glowing Spider Emblem -->
+        <div class="text-spidey-red glow-spidey">
+          <svg class="w-8 h-8 fill-current" viewBox="0 0 100 100">
+            <path d="M50 5C25.1 5 5 25.1 5 50s20.1 45 45 45 45-20.1 45-45S74.9 5 50 5zm0 8c20.4 0 37 16.6 37 37S70.4 87 50 87 13 70.4 13 50s16.6-37 37-37zm0 6c-3.1 0-6.1.5-9 1.4v2.7c2.8-.7 5.8-1.1 9-1.1 16 0 29 13 29 29 0 3.2-.4 6.2-1.1 9h2.7c.9-2.9 1.4-5.9 1.4-9 0-17.7-14.3-32-32-32zm-12.4 4.3c-2.4 1.4-4.6 3.2-6.5 5.3l1.9 1.9c1.7-1.9 3.7-3.5 5.9-4.8l-1.3-2.4zm24.8 0l-1.3 2.4c2.2 1.3 4.2 2.9 5.9 4.8l1.9-1.9c-1.9-2.1-4.1-3.9-6.5-5.3zM27 28.9c-1.8 2.2-3.2 4.7-4.2 7.4l2.5 1c.9-2.4 2.2-4.6 3.8-6.5l-2.1-1.9zm46 0l-2.1 1.9c1.6 1.9 2.9 4.1 3.8 6.5l2.5-1c-1-2.7-2.4-5.2-4.2-7.4zM19.3 43.6C19.1 45.7 19 47.8 19 50c0 4.1.6 8.1 1.7 11.9l2.6-.7c-1-3.5-1.5-7.2-1.5-11.2 0-2 .1-3.9.3-5.8l-2.8-.6zm61.4 0l-2.8.6c.2 1.9.3 3.8.3 5.8 0 4-.5 7.7-1.5 11.2l2.6.7c1.1-3.8 1.7-7.8 1.7-11.9 0-2.2-.1-4.3-.3-6.4zM24.7 65c1.6 2.4 3.6 4.5 5.8 6.3l1.7-2.1c-2-1.6-3.8-3.5-5.2-5.7l-2.3 1.5zm50.6 0l-2.3-1.5c-1.4 2.2-3.2 4.1-5.2 5.7l1.7 2.1c2.2-1.8 4.2-3.9 5.8-6.3zm-41.2 9.5c2.9 1 6 1.5 9.2 1.5 8 0 15.3-3.3 20.5-8.5l-1.9-1.9C57 70.3 50.7 73 44 73c-2.8 0-5.5-.5-8-1.4l-.7 2.9z"/>
+          </svg>
+        </div>
+        <span class="font-display font-black tracking-wider text-lg uppercase bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          Spidey BND
+        </span>
+      </div>
+      
+      <!-- Soundtrack Player -->
+      <div class="flex items-center gap-3">
+        <button 
+          id="bg-music-toggle" 
+          class="glassmorphism p-2 rounded-xl border border-white/10 hover:border-spidey-red/40 text-gray-400 hover:text-white transition-all duration-300 flex items-center gap-2 text-xs font-semibold font-display uppercase cursor-pointer"
+          aria-label="Toggle ambient soundtrack"
+        >
+          <span id="equalizer" class="hidden flex items-end gap-0.5 h-3 w-4">
+            <span class="bg-spidey-red w-0.5 h-full animate-[pulse_0.6s_infinite_alternate]"></span>
+            <span class="bg-spidey-red w-0.5 h-1/2 animate-[pulse_0.4s_infinite_alternate_0.1s]"></span>
+            <span class="bg-spidey-red w-0.5 h-3/4 animate-[pulse_0.8s_infinite_alternate_0.2s]"></span>
+          </span>
+          <svg id="music-icon-muted" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+          <svg id="music-icon-playing" xmlns="http://www.w3.org/2000/svg" class="hidden h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <span id="music-status">Activar BSO Clásica</span>
+        </button>
+        <audio id="ambient-audio" loop>
+          <source src="https://archive.org/download/spider-man-the-movie-original-game-score-2002/02%20Main%20Menu.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+    </header>
+
+    <!-- Main Content (Centered on the screen) -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-8">
+      
+      <!-- Hero / Movie Logo Title Section -->
+      <section class="w-full text-center flex flex-col items-center z-10">
+        
+        <!-- Big Film Title -->
+        <div class="relative mb-4 select-none group flex flex-col items-center justify-center">
+          <!-- Giant Title Glow Behind -->
+          <div class="absolute -z-10 text-spidey-red/5 animate-pulse duration-[6s] glow-spidey pointer-events-none">
+            <svg class="w-40 h-40 fill-none stroke-current" viewBox="0 0 100 100" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 50 40 L 56 49 L 50 58 L 44 49 Z" fill="currentColor" stroke="none" />
+              <path d="M 50 28 L 53.5 33 L 50 38 L 46.5 33 Z" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          
+          <h1 class="text-5xl sm:text-6xl md:text-7xl font-black font-display tracking-tighter leading-none uppercase text-white glow-spidey relative">
+            SPIDER-MAN
+          </h1>
+          <div class="text-xl sm:text-2xl md:text-3xl font-extrabold font-display tracking-widest text-spidey-red uppercase glow-spidey mt-2">
+            BRAND NEW DAY
+          </div>
+        </div>
+
+        <!-- Main Countdown Component -->
+        <Countdown />
+
+        <!-- Action Button / Trailer Trigger Component -->
+        <div class="mt-2">
+          <TrailerModal />
+        </div>
+
+      </section>
+
+      <!-- Reminder & Share Actions -->
+      <ReminderShare />
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full px-6 py-6 border-t border-white/5 text-center text-xs text-gray-500 z-10">
+      <p class="mb-2">
+        Esta es una página tributo creada por fans. Spider-Man, sus personajes y marcas registradas son propiedad de Marvel/Sony.
+      </p>
+      <p class="mb-2 text-gray-400 font-semibold">
+        Desarrollado por Leandro A. Canela
+      </p>
+      <p>
+        &copy; {new Date().getFullYear()} - Astro & Tailwind v4.
+      </p>
+    </footer>
+
+  </div>
+
+</Layout>
+
+<script>
+  // Ambient Music Toggle Logic
+  const audio = document.getElementById('ambient-audio') as HTMLAudioElement | null;
+  const toggleBtn = document.getElementById('bg-music-toggle');
+  const eq = document.getElementById('equalizer');
+  const iconMuted = document.getElementById('music-icon-muted');
+  const iconPlaying = document.getElementById('music-icon-playing');
+  const statusText = document.getElementById('music-status');
+
+  if (audio && toggleBtn && eq && iconMuted && iconPlaying && statusText) {
+    toggleBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().then(() => {
+          eq.classList.remove('hidden');
+          eq.classList.add('flex');
+          iconMuted.classList.add('hidden');
+          iconPlaying.classList.remove('hidden');
+          statusText.innerText = 'BSO Clásica Activa';
+          toggleBtn.classList.add('border-spidey-red/40');
+        }).catch(err => {
+          console.error('Audio playback failed:', err);
+        });
+      } else {
+        audio.pause();
+        eq.classList.add('hidden');
+        eq.classList.remove('flex');
+        iconMuted.classList.remove('hidden');
+        iconPlaying.classList.add('hidden');
+        statusText.innerText = 'Activar BSO Clásica';
+        toggleBtn.classList.remove('border-spidey-red/40');
+      }
+    });
+  }
+
+  // Cinematic Background Slideshow Logic
+  const slides = document.querySelectorAll('.bg-slide');
+  let currentSlide = 0;
+
+  if (slides.length > 0) {
+    setInterval(() => {
+      // Fade out current slide
+      slides[currentSlide].classList.remove('opacity-100');
+      slides[currentSlide].classList.add('opacity-0');
+      
+      // Calculate next slide index
+      currentSlide = (currentSlide + 1) % slides.length;
+      
+      // Fade in next slide
+      slides[currentSlide].classList.remove('opacity-0');
+      slides[currentSlide].classList.add('opacity-100');
+    }, 6000); // Transitions every 6 seconds
+  }
+</script>

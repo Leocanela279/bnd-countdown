@@ -1,0 +1,217 @@
+---
+// Countdown.astro - High-performance dynamic countdown with animated SVG rings
+---
+
+<div class="w-full py-12 flex flex-col items-center">
+  <!-- Interactive Web Header decoration -->
+  <div class="relative w-full max-w-4xl px-4 flex flex-col items-center mb-8">
+    <div class="absolute -top-10 w-24 h-24 opacity-20 pointer-events-none text-spidey-red animate-float">
+      <!-- Web icon overlay -->
+      <svg viewBox="0 0 100 100" fill="currentColor">
+        <path d="M50 5C25.1 5 5 25.1 5 50s20.1 45 45 45 45-20.1 45-45S74.9 5 50 5zm0 8c20.4 0 37 16.6 37 37S70.4 87 50 87 13 70.4 13 50s16.6-37 37-37zm0 6c-3.1 0-6.1.5-9 1.4v2.7c2.8-.7 5.8-1.1 9-1.1 16 0 29 13 29 29 0 3.2-.4 6.2-1.1 9h2.7c.9-2.9 1.4-5.9 1.4-9 0-17.7-14.3-32-32-32zm-12.4 4.3c-2.4 1.4-4.6 3.2-6.5 5.3l1.9 1.9c1.7-1.9 3.7-3.5 5.9-4.8l-1.3-2.4zm24.8 0l-1.3 2.4c2.2 1.3 4.2 2.9 5.9 4.8l1.9-1.9c-1.9-2.1-4.1-3.9-6.5-5.3zM27 28.9c-1.8 2.2-3.2 4.7-4.2 7.4l2.5 1c.9-2.4 2.2-4.6 3.8-6.5l-2.1-1.9zm46 0l-2.1 1.9c1.6 1.9 2.9 4.1 3.8 6.5l2.5-1c-1-2.7-2.4-5.2-4.2-7.4zM19.3 43.6C19.1 45.7 19 47.8 19 50c0 4.1.6 8.1 1.7 11.9l2.6-.7c-1-3.5-1.5-7.2-1.5-11.2 0-2 .1-3.9.3-5.8l-2.8-.6zm61.4 0l-2.8.6c.2 1.9.3 3.8.3 5.8 0 4-.5 7.7-1.5 11.2l2.6.7c1.1-3.8 1.7-7.8 1.7-11.9 0-2.2-.1-4.3-.3-6.4zM24.7 65c1.6 2.4 3.6 4.5 5.8 6.3l1.7-2.1c-2-1.6-3.8-3.5-5.2-5.7l-2.3 1.5zm50.6 0l-2.3-1.5c-1.4 2.2-3.2 4.1-5.2 5.7l1.7 2.1c2.2-1.8 4.2-3.9 5.8-6.3zm-41.2 9.5c2.9 1 6 1.5 9.2 1.5 8 0 15.3-3.3 20.5-8.5l-1.9-1.9C57 70.3 50.7 73 44 73c-2.8 0-5.5-.5-8-1.4l-.7 2.9z"/>
+      </svg>
+    </div>
+    
+    <span class="text-spidey-red font-display uppercase tracking-widest font-extrabold text-sm mb-2 glow-spidey">Lanzamiento Oficial</span>
+    <h2 class="text-3xl md:text-5xl font-black font-display text-center tracking-tight bg-gradient-to-r from-white via-gray-200 to-spidey-red bg-clip-text text-transparent uppercase">
+      Cuenta Regresiva
+    </h2>
+    <p class="text-gray-400 mt-2 text-center text-sm md:text-base max-w-lg font-light">
+      El trepamuros regresa en una aventura totalmente renovada. ¿Estás listo para el inicio de una nueva era?
+    </p>
+  </div>
+
+  <!-- Countdown Grid -->
+  <div id="countdown-wrapper" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl w-full px-4 md:px-6 transition-opacity duration-500">
+    
+    <!-- DAYS CARD -->
+    <div class="relative glassmorphism rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center border-t-2 border-spidey-red/60 group overflow-hidden">
+      <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-spidey-red/5 rounded-full blur-2xl group-hover:bg-spidey-red/10 transition-colors"></div>
+      
+      <!-- SVG Progress Ring -->
+      <div class="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center">
+        <svg viewBox="0 0 112 112" class="w-full h-full transform -rotate-90">
+          <!-- Track -->
+          <circle cx="56" cy="56" r="48" class="stroke-white/5 fill-transparent" stroke-width="4" id="c-track-days"/>
+          <!-- Progress -->
+          <circle id="days-ring" cx="56" cy="56" r="48" class="stroke-spidey-red fill-transparent transition-all duration-1000 ease-out glow-spidey" stroke-width="4" stroke-dasharray="301.6" stroke-dashoffset="301.6" stroke-linecap="round"/>
+        </svg>
+        <!-- Value absolute centered -->
+        <span class="absolute text-3xl sm:text-4xl md:text-5xl font-black font-display tracking-tight text-white glow-spidey" id="days-val">00</span>
+      </div>
+      
+      <span class="text-xs uppercase tracking-widest mt-4 font-bold text-gray-400 group-hover:text-spidey-red transition-colors duration-300">Días</span>
+    </div>
+
+    <!-- HOURS CARD -->
+    <div class="relative glassmorphism rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center border-t-2 border-spidey-blue-light/60 group overflow-hidden">
+      <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-spidey-blue-light/5 rounded-full blur-2xl group-hover:bg-spidey-blue-light/10 transition-colors"></div>
+      
+      <!-- SVG Progress Ring -->
+      <div class="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center">
+        <svg viewBox="0 0 112 112" class="w-full h-full transform -rotate-90">
+          <circle cx="56" cy="56" r="48" class="stroke-white/5 fill-transparent" stroke-width="4"/>
+          <circle id="hours-ring" cx="56" cy="56" r="48" class="stroke-spidey-blue-light fill-transparent transition-all duration-1000 ease-out glow-blue" stroke-width="4" stroke-dasharray="301.6" stroke-dashoffset="301.6" stroke-linecap="round"/>
+        </svg>
+        <span class="absolute text-3xl sm:text-4xl md:text-5xl font-black font-display tracking-tight text-white glow-blue" id="hours-val">00</span>
+      </div>
+      
+      <span class="text-xs uppercase tracking-widest mt-4 font-bold text-gray-400 group-hover:text-spidey-blue-light transition-colors duration-300">Horas</span>
+    </div>
+
+    <!-- MINUTES CARD -->
+    <div class="relative glassmorphism rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center border-t-2 border-spidey-red/60 group overflow-hidden">
+      <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-spidey-red/5 rounded-full blur-2xl group-hover:bg-spidey-red/10 transition-colors"></div>
+      
+      <!-- SVG Progress Ring -->
+      <div class="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center">
+        <svg viewBox="0 0 112 112" class="w-full h-full transform -rotate-90">
+          <circle cx="56" cy="56" r="48" class="stroke-white/5 fill-transparent" stroke-width="4"/>
+          <circle id="minutes-ring" cx="56" cy="56" r="48" class="stroke-spidey-red fill-transparent transition-all duration-1000 ease-out glow-spidey" stroke-width="4" stroke-dasharray="301.6" stroke-dashoffset="301.6" stroke-linecap="round"/>
+        </svg>
+        <span class="absolute text-3xl sm:text-4xl md:text-5xl font-black font-display tracking-tight text-white glow-spidey" id="minutes-val">00</span>
+      </div>
+      
+      <span class="text-xs uppercase tracking-widest mt-4 font-bold text-gray-400 group-hover:text-spidey-red transition-colors duration-300">Minutos</span>
+    </div>
+
+    <!-- SECONDS CARD -->
+    <div class="relative glassmorphism rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center border-t-2 border-spidey-blue-light/60 group overflow-hidden">
+      <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-spidey-blue-light/5 rounded-full blur-2xl group-hover:bg-spidey-blue-light/10 transition-colors"></div>
+      
+      <!-- SVG Progress Ring -->
+      <div class="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center">
+        <svg viewBox="0 0 112 112" class="w-full h-full transform -rotate-90">
+          <circle cx="56" cy="56" r="48" class="stroke-white/5 fill-transparent" stroke-width="4"/>
+          <circle id="seconds-ring" cx="56" cy="56" r="48" class="stroke-spidey-blue-light fill-transparent transition-all duration-300 ease-linear glow-blue" stroke-width="4" stroke-dasharray="301.6" stroke-dashoffset="301.6" stroke-linecap="round"/>
+        </svg>
+        <span class="absolute text-3xl sm:text-4xl md:text-5xl font-black font-display tracking-tight text-white glow-blue" id="seconds-val">00</span>
+      </div>
+      
+      <span class="text-xs uppercase tracking-widest mt-4 font-bold text-gray-400 group-hover:text-spidey-blue-light transition-colors duration-300">Segundos</span>
+    </div>
+
+  </div>
+
+  <!-- Completed State Container (hidden by default) -->
+  <div id="countdown-release-card" class="hidden max-w-xl w-full px-6 text-center transition-all duration-700 transform scale-95 opacity-0">
+    <div class="glassmorphism rounded-2xl p-8 border-2 border-spidey-red flex flex-col items-center relative overflow-hidden shadow-[0_0_50px_rgba(230,36,41,0.25)]">
+      <!-- Web glow overlay -->
+      <div class="absolute inset-0 bg-radial-at-t from-spidey-red/10 to-transparent pointer-events-none"></div>
+      
+      <span class="text-accent-gold font-display uppercase tracking-widest font-extrabold text-sm mb-3 animate-pulse">¡Estreno Mundial!</span>
+      <h3 class="text-3xl md:text-5xl font-black font-display text-white tracking-tight uppercase leading-tight">
+        Spider-Man<br/>
+        <span class="text-spidey-red glow-spidey">Brand New Day</span>
+      </h3>
+      <p class="text-gray-300 mt-4 text-sm md:text-base leading-relaxed">
+        ¡La espera ha terminado! El trepamuros regresa hoy a los cines de todo el mundo. Prepárate para el viaje más emocionante.
+      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-4 w-full justify-center">
+        <a href="https://www.marvel.com" target="_blank" rel="noopener noreferrer" 
+           class="px-8 py-3 bg-spidey-red hover:bg-spidey-red-dark text-white font-bold font-display text-sm uppercase rounded-xl transition-all duration-300 hover:scale-105 shadow-lg shadow-spidey-red/30 flex items-center justify-center gap-2">
+          <span>Comprar Entradas</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Target date: July 31, 2026 00:00:00 (Local Time)
+  const targetDate = new Date('2026-07-31T00:00:00');
+  
+  // Set the start date to when this project was initialized (June 17, 2026)
+  // to calculate the percentage of completion for the days circle
+  const startDate = new Date('2026-06-17T00:00:00');
+  const totalDuration = targetDate.getTime() - startDate.getTime();
+
+  // DOM Elements
+  const daysVal = document.getElementById('days-val');
+  const hoursVal = document.getElementById('hours-val');
+  const minutesVal = document.getElementById('minutes-val');
+  const secondsVal = document.getElementById('seconds-val');
+
+  const daysRing = document.getElementById('days-ring');
+  const hoursRing = document.getElementById('hours-ring');
+  const minutesRing = document.getElementById('minutes-ring');
+  const secondsRing = document.getElementById('seconds-ring');
+
+  const wrapper = document.getElementById('countdown-wrapper');
+  const releaseCard = document.getElementById('countdown-release-card');
+
+  // Ring circumference for radius = 48 is 2 * Math.PI * 48 = 301.59
+  const circumference = 301.59;
+
+  function setProgress(circle: HTMLElement | null, percent: number) {
+    if (!circle) return;
+    const offset = circumference - (percent / 100) * circumference;
+    circle.style.strokeDashoffset = offset.toString();
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const timeRemaining = targetDate.getTime() - now.getTime();
+
+    if (timeRemaining <= 0) {
+      // Countdown finished
+      if (wrapper && releaseCard) {
+        wrapper.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          wrapper.classList.add('hidden');
+          releaseCard.classList.remove('hidden');
+          // Trigger transition
+          setTimeout(() => {
+            releaseCard.classList.remove('scale-95', 'opacity-0');
+            releaseCard.classList.add('scale-100', 'opacity-100');
+          }, 50);
+        }, 500);
+      }
+      return;
+    }
+
+    // Calculations
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+    // Update values with zero padding
+    if (daysVal) daysVal.innerText = days.toString().padStart(2, '0');
+    if (hoursVal) hoursVal.innerText = hours.toString().padStart(2, '0');
+    if (minutesVal) minutesVal.innerText = minutes.toString().padStart(2, '0');
+    if (secondsVal) secondsVal.innerText = seconds.toString().padStart(2, '0');
+
+    // Calculate percentages
+    // Days percent: from project start to release
+    const totalTimeRemaining = timeRemaining;
+    const daysPercent = Math.max(0, Math.min(100, (totalTimeRemaining / totalDuration) * 100));
+    
+    // Hours percent: out of 24
+    const hoursPercent = (hours / 24) * 100;
+    
+    // Minutes percent: out of 60
+    const minutesPercent = (minutes / 60) * 100;
+    
+    // Seconds percent: out of 60
+    const secondsPercent = (seconds / 60) * 100;
+
+    // Update rings
+    setProgress(daysRing, daysPercent);
+    setProgress(hoursRing, hoursPercent);
+    setProgress(minutesRing, minutesPercent);
+    setProgress(secondsRing, secondsPercent);
+  }
+
+  // Initial call and run interval
+  updateCountdown();
+  const intervalId = setInterval(updateCountdown, 1000);
+
+  // Clean up if Astro view transition triggers teardown
+  document.addEventListener('astro:after-swap', () => {
+    clearInterval(intervalId);
+  });
+</script>

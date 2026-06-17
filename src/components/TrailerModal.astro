@@ -1,0 +1,134 @@
+---
+// TrailerModal.astro - Modern dialog with top-layer entry/exit CSS animations
+---
+
+<!-- Trigger Button -->
+<button 
+  id="open-trailer-btn" 
+  class="px-8 py-4 bg-spidey-red hover:bg-spidey-red-dark text-white font-black font-display text-base uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(230,36,41,0.5)] flex items-center gap-3 cursor-pointer shadow-lg shadow-spidey-red/20 active:scale-95 z-10"
+>
+  <!-- Play SVG Icon -->
+  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+    <path d="M8 5v14l11-7z"/>
+  </svg>
+  <span>Ver Tráiler Oficial</span>
+</button>
+
+<!-- Dialog Modal -->
+<dialog id="trailer-dialog" class="glassmorphism rounded-2xl border border-spidey-red/30 p-2 md:p-4 w-11/12 max-w-4xl backdrop:backdrop-blur-md overflow-hidden relative outline-none">
+  <!-- Close Button inside the dialog -->
+  <button id="close-dialog-btn" class="absolute top-4 right-4 text-gray-400 hover:text-spidey-red transition-colors duration-300浏览 z-10 cursor-pointer p-1.5 rounded-full hover:bg-white/5" aria-label="Cerrar modal">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  
+  <!-- Video Aspect-Ratio Container -->
+  <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black">
+    <iframe 
+      id="trailer-iframe" 
+      class="absolute inset-0 w-full h-full border-0" 
+      src="" 
+      title="Spider-Man: Brand New Day Trailer"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen
+    ></iframe>
+  </div>
+</dialog>
+
+<style>
+  /* 1. Base / Closed State for Dialog (centered) */
+  dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    opacity: 0;
+    transform: scale(0.92);
+    /* Allow discrete transitions */
+    transition-property: opacity, transform, display, overlay;
+    transition-duration: 0.35s;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    transition-behavior: allow-discrete;
+  }
+
+  /* 2. Open State */
+  dialog[open] {
+    opacity: 1;
+    transform: scale(1);
+
+    /* 3. Starting style for entry transition */
+    @starting-style {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+  }
+
+  /* 4. Backdrop Styling & Animations */
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0);
+    transition: 
+      display 0.35s allow-discrete,
+      overlay 0.35s allow-discrete,
+      background-color 0.35s ease-out;
+  }
+
+  dialog[open]::backdrop {
+    background-color: rgba(3, 3, 3, 0.9);
+
+    @starting-style {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+
+  /* Reduced motion considerations */
+  @media (prefers-reduced-motion: reduce) {
+    dialog {
+      transform: none;
+      transition-duration: 0.15s;
+    }
+    dialog[open] {
+      @starting-style {
+        transform: none;
+      }
+    }
+  }
+</style>
+
+<script>
+  const openBtn = document.getElementById('open-trailer-btn');
+  const closeBtn = document.getElementById('close-dialog-btn');
+  const dialog = document.getElementById('trailer-dialog') as HTMLDialogElement | null;
+  const iframe = document.getElementById('trailer-iframe') as HTMLIFrameElement | null;
+  
+  // Official Spider-Man Brand New Day Trailer
+  const videoUrl = 'https://www.youtube.com/embed/8TZMtslA3UY?autoplay=1';
+
+  if (dialog && openBtn && closeBtn && iframe) {
+    // Open Dialog and set Video Source
+    openBtn.addEventListener('click', () => {
+      iframe.setAttribute('src', videoUrl);
+      dialog.showModal();
+    });
+
+    // Close function
+    const closeDialog = () => {
+      dialog.close();
+      // Remove video source to stop playback immediately
+      iframe.setAttribute('src', '');
+    };
+
+    closeBtn.addEventListener('click', closeDialog);
+
+    // Light-dismiss (clicking outside the dialog box)
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        closeDialog();
+      }
+    });
+
+    // Handle Esc key (native behavior, but we want to clear iframe too)
+    dialog.addEventListener('cancel', () => {
+      iframe.setAttribute('src', '');
+    });
+  }
+</script>
