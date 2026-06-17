@@ -11,18 +11,18 @@ import ReminderShare from '../components/ReminderShare.astro';
   <!-- Interactive Canvas Web Background -->
   <SpiderBackground />
 
-  <!-- Cinematic Full-Screen Background (Double-layer to prevent cropping, brightened/aclarado) -->
-  <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
-    <!-- Lightened Vignette / Fading Gradients to maximize visibility of background and readability of text -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(3,3,3,0.1)_0%,rgba(3,3,3,0.75)_80%)] z-10"></div>
-    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-bg to-transparent z-10"></div>
-    <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-bg to-transparent z-10"></div>
-
-    <!-- Background Image Wrapper (Opacity increased, brightness added, and spidey-mask-fade added to integrate edges with background) -->
-    <div class="relative w-full h-full opacity-85 brightness-150 spidey-mask-fade">
-      <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover blur-2xl scale-125 opacity-75" alt="Blur Background" />
+  <!-- Cinematic Full-Screen Background -->
+  <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none bg-dark-bg">
+    <!-- Background Image Wrapper (Opacity and brightness increased, using object-contain to show fully) -->
+    <div class="absolute inset-0 w-full h-full opacity-60 md:opacity-85 brightness-125">
+      <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover blur-3xl scale-125 opacity-75" alt="Blur Background" />
       <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-contain blur-[1px]" alt="Spider-Man Background Art" />
     </div>
+
+    <!-- Soft Vignette / Fading Gradients to maximize readability and integrate image edges without using buggy mask-images -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(3,3,3,0)_20%,rgba(3,3,3,0.8)_100%)]"></div>
+    <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-transparent"></div>
+    <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-bg to-transparent"></div>
   </div>
 
   <!-- Main Content Wrapper (Centered on the entire screen overlay) -->
