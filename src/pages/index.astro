@@ -82,32 +82,7 @@ import ReminderShare from '../components/ReminderShare.astro';
           Spidey BND
         </span>
       </div>
-      
-      <!-- Soundtrack Player -->
-      <div class="flex items-center gap-3">
-        <button 
-          id="bg-music-toggle" 
-          class="glassmorphism p-2 rounded-xl border border-white/10 hover:border-spidey-red/40 text-gray-400 hover:text-white transition-all duration-300 flex items-center gap-2 text-xs font-semibold font-display uppercase cursor-pointer"
-          aria-label="Toggle ambient soundtrack"
-        >
-          <span id="equalizer" class="hidden flex items-end gap-0.5 h-3 w-4">
-            <span class="bg-spidey-red w-0.5 h-full animate-[pulse_0.6s_infinite_alternate]"></span>
-            <span class="bg-spidey-red w-0.5 h-1/2 animate-[pulse_0.4s_infinite_alternate_0.1s]"></span>
-            <span class="bg-spidey-red w-0.5 h-3/4 animate-[pulse_0.8s_infinite_alternate_0.2s]"></span>
-          </span>
-          <svg id="music-icon-muted" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-          </svg>
-          <svg id="music-icon-playing" xmlns="http://www.w3.org/2000/svg" class="hidden h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-          </svg>
-          <span id="music-status">Activar BSO Clásica</span>
-        </button>
-        <audio id="ambient-audio" loop>
-          <source src="https://archive.org/download/spider-man-the-movie-original-game-score-2002/02%20Main%20Menu.mp3" type="audio/mpeg" />
-        </audio>
-      </div>
+
     </header>
 
     <!-- Main Content (Centered on the screen) -->
@@ -167,38 +142,6 @@ import ReminderShare from '../components/ReminderShare.astro';
 </Layout>
 
 <script>
-  // Ambient Music Toggle Logic
-  const audio = document.getElementById('ambient-audio') as HTMLAudioElement | null;
-  const toggleBtn = document.getElementById('bg-music-toggle');
-  const eq = document.getElementById('equalizer');
-  const iconMuted = document.getElementById('music-icon-muted');
-  const iconPlaying = document.getElementById('music-icon-playing');
-  const statusText = document.getElementById('music-status');
-
-  if (audio && toggleBtn && eq && iconMuted && iconPlaying && statusText) {
-    toggleBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play().then(() => {
-          eq.classList.remove('hidden');
-          eq.classList.add('flex');
-          iconMuted.classList.add('hidden');
-          iconPlaying.classList.remove('hidden');
-          statusText.innerText = 'BSO Clásica Activa';
-          toggleBtn.classList.add('border-spidey-red/40');
-        }).catch(err => {
-          console.error('Audio playback failed:', err);
-        });
-      } else {
-        audio.pause();
-        eq.classList.add('hidden');
-        eq.classList.remove('flex');
-        iconMuted.classList.remove('hidden');
-        iconPlaying.classList.add('hidden');
-        statusText.innerText = 'Activar BSO Clásica';
-        toggleBtn.classList.remove('border-spidey-red/40');
-      }
-    });
-  }
 
   // Cinematic Background Slideshow Logic
   const slides = document.querySelectorAll('.bg-slide');

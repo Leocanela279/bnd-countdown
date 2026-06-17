@@ -7,7 +7,7 @@ Una espectacular y cinematográfica web de cuenta regresiva para el estreno de l
 *   **Diseño Mobile-First e Interactivo**: Optimizado al 100% para pantallas móviles y de escritorio, con una estética premium inspirada en el cine, glows de neón, gradientes balanceados de azul y rojo, y un logo Stark Suit animado.
 *   **Fondo Arácnido Interactivo (Canvas)**: Un sistema de partículas sensible al cursor del usuario en el escritorio y toques en móvil, simulando hilos de telaraña interactivos.
 *   **Carrusel Cinematic Fusión (Doble Capa)**: Galería de imágenes de fondo (incluyendo el póster oficial Brand New Day y artes conceptuales de Hulk y Spidey) usando una técnica de doble capa (blur en cover + contain en primer plano) para evitar recortes de personajes en móviles verticales.
-*   **Banda Sonora Clásica Integrada**: Reproductor de la mítica BSO clásica de Spider-Man (compuesta por **Danny Elfman** para la trilogía de Tobey Maguire) con botón interactivo, ecualizador visual animado y gestión inteligente de reproducción.
+
 *   **Tráiler Oficial Integrado**: Modal responsivo con el tráiler de YouTube, accesible mediante transiciones suaves, controles de cerrado con tecla Esc, y click fuera del modal.
 *   **Acciones Rápidas (Reminder & Share)**:
     *   **Agregar al Calendario**: Agrega el evento del estreno directamente a Google Calendar.
@@ -68,5 +68,5 @@ Esta web está completamente lista para ser desplegada en **Vercel** en cuestió
 > Este sitio web es una **obra artística sin fines de lucro creada por fans** y para fans (Fan Tribute). 
 > 
 > *   **Marcas y Personajes**: *Spider-Man*, *Bruce Banner / Hulk*, y todos los elementos asociados son marcas comerciales y derechos de autor registrados de **Marvel Entertainment, LLC** y **Sony Pictures Entertainment Inc.**
-> *   **Música**: El tema musical es una composición de **Danny Elfman**. El archivo de audio se transmite en directo desde directorios públicos con fines puramente nostálgicos y de tributo personal.
+
 > *   **Uso Legítimo (Fair Use)**: El uso de artes, nombres y logotipos en este proyecto cae bajo las pautas de *Uso Legítimo* en los derechos de autor (propósito ilustrativo, tributo y no comercialización). No se genera ningún tipo de ingreso directo ni indirecto con esta página.
